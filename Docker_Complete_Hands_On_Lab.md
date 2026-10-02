@@ -1123,6 +1123,9 @@ CMD ["curl", "https://example.com"]
 
 Specifies the default command when the container starts.
 
+<img width="809" height="229" alt="image" src="https://github.com/user-attachments/assets/650cc885-1cb1-4577-ae40-57003046d9f7" />
+
+
 ---
 
 # 28. Docker Build Context
