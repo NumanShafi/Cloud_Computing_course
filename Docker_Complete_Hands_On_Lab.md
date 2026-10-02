@@ -1013,26 +1013,7 @@ The containers can communicate through the Docker network.
 
 ---
 
-DEFAULT BRIDGE                          USER-DEFINED BRIDGE
-─────────────────                       ─────────────────────
-                                        
-docker run -d --name c1 ubuntu          docker network create mynet
-docker run -d --name c2 ubuntu          docker run -d --name c1 --network mynet ubuntu
-                                        docker run -d --name c2 --network mynet ubuntu
-
-┌──────────────┐                        ┌──────────────┐
-│  docker0     │                        │   mynet      │
-│  (default)   │                        │              │
-│              │                        │  ┌───┐ ┌───┐ │
-│  ┌───┐ ┌───┐ │                        │  │c1 │ │c2 │ │
-│  │c1 │ │c2 │ │                        │  └───┘ └───┘ │
-│  └───┘ └───┘ │                        │              │
-│              │                        │ + DNS server │
-│ NO DNS       │                        └──────────────┘
-└──────────────┘                        
-                                        ✅ ping c2 works
-❌ ping c2 fails                        
-✅ ping 172.17.0.x works               
+<img width="668" height="483" alt="image" src="https://github.com/user-attachments/assets/5a15dc80-df73-4de4-b78c-4012ca480a8c" />
 
 
 # 25. Dockerfile: Build Your Own Image
