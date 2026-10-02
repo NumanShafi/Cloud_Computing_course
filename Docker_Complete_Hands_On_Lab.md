@@ -125,6 +125,9 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 DRY_RUN=1 sudo sh ./get-docker.sh
 ```
 
+<img width="1650" height="799" alt="image" src="https://github.com/user-attachments/assets/a9f109b0-faa2-490f-8de8-d5fc1799ae2e" />
+
+
 ## Step 8: Check Docker service
 
 ```bash
