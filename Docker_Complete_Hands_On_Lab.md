@@ -1078,6 +1078,8 @@ Build:
 ```bash
 docker build -t my-first-image .
 ```
+<img width="752" height="455" alt="image" src="https://github.com/user-attachments/assets/9c9d78e5-6184-4a09-888e-9ab515e99693" />
+
 
 Check:
 
@@ -1100,6 +1102,8 @@ docker run --rm my-first-image
 ```dockerfile
 FROM ubuntu:24.04
 ```
+<img width="632" height="366" alt="image" src="https://github.com/user-attachments/assets/c8adbf82-9419-44f1-9919-7b92d5c8e7fa" />
+
 
 Specifies the base image.
 
@@ -1133,6 +1137,7 @@ The final `.` means:
 
 ```text
 Use the current directory as the build context.
+Send everything in the current directory to the Docker daemon to be used as the build context.
 ```
 
 Files used by `COPY` must be inside the build context.
