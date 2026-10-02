@@ -116,11 +116,12 @@ sudo apt remove -y docker.io docker-doc docker-compose docker-compose-v2 podman-
 ```
 
 
-## Step 7: Install Docker
+## Step 3 to 7: Install Docker
 
 
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh  
+
 DRY_RUN=1 sudo sh ./get-docker.sh
 ```
 
