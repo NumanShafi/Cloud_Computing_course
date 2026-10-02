@@ -618,11 +618,15 @@ Stop `web2` and verify that 8081 and 8083 still work.
 
 # 16. Environment Variables
 
+This section explains how to pass environment variables into a Docker container at runtime using the -e (or --env) flag. Environment variables are a standard way to configure applications without hardcoding values into images.
+
 Run:
 
 ```bash
 docker run --rm -e APP_NAME="DockerLab" ubuntu:24.04 env
 ```
+<img width="805" height="314" alt="image" src="https://github.com/user-attachments/assets/946aba32-6243-4200-b938-53637218a2f9" />
+
 
 You should see:
 
@@ -635,6 +639,10 @@ Another example:
 ```bash
 docker run --rm -e NAME=Student ubuntu:24.04 sh -c 'echo Hello $NAME'
 ```
+
+-e NAME=Student sets NAME inside the container.
+sh -c 'echo Hello $NAME' runs a shell command that expands $NAME.
+Single quotes '...' prevent your host shell from expanding $NAME — so the container's shell does the expansion.
 
 Output:
 
@@ -651,6 +659,8 @@ docker run -d \
   -e DEBUG=true \
   nginx
 ```
+<img width="805" height="190" alt="image" src="https://github.com/user-attachments/assets/946662d0-8fbc-461a-81d6-4c7c41f26ba3" />
+
 
 ---
 
