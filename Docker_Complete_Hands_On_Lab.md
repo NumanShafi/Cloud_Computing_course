@@ -108,11 +108,6 @@ Docker approximately:
 sudo apt update
 ```
 
-Optional:
-
-```bash
-sudo apt upgrade -y
-```
 
 ## Step 2: Remove conflicting old packages
 
@@ -120,46 +115,13 @@ sudo apt upgrade -y
 sudo apt remove -y docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc
 ```
 
-## Step 3: Install prerequisites
-
-```bash
-sudo apt install -y ca-certificates curl
-```
-
-## Step 4: Add Docker's official GPG key
-
-```bash
-sudo install -m 0755 -d /etc/apt/keyrings
-```
-
-```bash
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
-  -o /etc/apt/keyrings/docker.asc
-```
-
-```bash
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-```
-
-## Step 5: Add Docker repository
-
-```bash
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-## Step 6: Update package index
-
-```bash
-sudo apt update
-```
 
 ## Step 7: Install Docker
 
+
 ```bash
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+curl -fsSL https://get.docker.com -o get-docker.sh  
+DRY_RUN=1 sudo sh ./get-docker.sh
 ```
 
 ## Step 8: Check Docker service
