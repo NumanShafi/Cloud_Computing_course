@@ -786,6 +786,8 @@ Container writable storage is not a substitute for persistent storage.
 
 # 21. Volumes
 
+A named volume is storage that Docker itself creates and manages on the host (usually under /var/lib/docker/volumes/). You refer to it by name, and Docker handles the actual path.
+
 Create:
 
 ```bash
@@ -812,6 +814,8 @@ docker run -dit \
   -v mydata:/data \
   ubuntu:24.04
 ```
+<img width="805" height="251" alt="image" src="https://github.com/user-attachments/assets/6da6d2a9-74b7-480a-a55f-aeea4ff12cb2" />
+
 
 Enter:
 
@@ -854,9 +858,13 @@ docker exec volume-test2 cat /data/message.txt
 
 The data should still exist.
 
+Takeaway: Even after destroying the original container, the data persisted because it lived in the volume, not the container's writable layer.
+
 ---
 
 # 22. Bind Mounts
+
+A bind mount maps an explicit path on your host machine directly into the container. You control exactly where the files live on the host.
 
 Create a host directory:
 
@@ -879,6 +887,8 @@ docker run -d \
   -v ~/docker-lab/html:/usr/share/nginx/html:ro \
   nginx
 ```
+<img width="805" height="251" alt="image" src="https://github.com/user-attachments/assets/e2e5075f-1473-47cf-93ee-cb2d54c9211b" />
+
 
 Open:
 
@@ -903,6 +913,10 @@ Docker manages the storage.
 Bind Mount:
 You explicitly map a host path.
 ```
+<img width="805" height="507" alt="image" src="https://github.com/user-attachments/assets/c1ef95d3-0ad3-46e6-b45b-511001a23e45" />
+
+<img width="805" height="708" alt="image" src="https://github.com/user-attachments/assets/02adbd57-1423-4cfe-9b33-80400b5639ce" />
+
 
 ---
 
