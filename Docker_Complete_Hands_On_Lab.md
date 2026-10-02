@@ -922,17 +922,26 @@ You explicitly map a host path.
 
 # 23. Docker Networks
 
+Docker networking lets containers communicate with each other and with the outside world. Each network is an isolated virtual network.
+
+
 List:
 
 ```bash
 docker network ls
 ```
+Three defaults exist out of the box:
+bridge — default network for containers
+host — container shares the host's network stack
+none — no networking at all
+
 
 Inspect default bridge:
 
 ```bash
 docker network inspect bridge
 ```
+Returns JSON with subnet info, gateway, and a list of connected containers. You'll see "Containers": {} if nothing is attached, or entries for running containers.
 
 Create:
 
@@ -976,6 +985,7 @@ For example:
 ```bash
 docker exec container1 ping -c 3 container2
 ```
+Key point: On a user-defined network, Docker runs an embedded DNS server. Other containers can be reached by their container name — no need to look up IP addresses.
 
 ---
 
