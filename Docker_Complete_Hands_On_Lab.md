@@ -1013,6 +1013,28 @@ The containers can communicate through the Docker network.
 
 ---
 
+DEFAULT BRIDGE                          USER-DEFINED BRIDGE
+─────────────────                       ─────────────────────
+                                        
+docker run -d --name c1 ubuntu          docker network create mynet
+docker run -d --name c2 ubuntu          docker run -d --name c1 --network mynet ubuntu
+                                        docker run -d --name c2 --network mynet ubuntu
+
+┌──────────────┐                        ┌──────────────┐
+│  docker0     │                        │   mynet      │
+│  (default)   │                        │              │
+│              │                        │  ┌───┐ ┌───┐ │
+│  ┌───┐ ┌───┐ │                        │  │c1 │ │c2 │ │
+│  │c1 │ │c2 │ │                        │  └───┘ └───┘ │
+│  └───┘ └───┘ │                        │              │
+│              │                        │ + DNS server │
+│ NO DNS       │                        └──────────────┘
+└──────────────┘                        
+                                        ✅ ping c2 works
+❌ ping c2 fails                        
+✅ ping 172.17.0.x works               
+
+
 # 25. Dockerfile: Build Your Own Image
 
 A Dockerfile contains image-building instructions.
@@ -1032,6 +1054,20 @@ ENV
 ARG
 USER
 ```
+
+The most commonly used instructions in Dockerfile are:
+FROM: specifies the base image for the build
+RUN: runs a command to install software or make other changes to the image
+COPY: copies files or directories from the host machine to the image
+ENV: sets environment variables
+EXPOSE: specifies the ports that the container will listen on
+CMD: specifies the command that will be run when a container is started from the image
+ENTRYPOINT: instruction sets the command that will be executed when the container is started from the image.
+Unlike the CMD instruction, the ENTRYPOINT instruction does not get overridden when additional command-line arguments  are passed to the docker run command
+
+
+<img width="736" height="364" alt="image" src="https://github.com/user-attachments/assets/fa4189a9-9786-4ae9-b1df-8ed4f212ccaa" />
+
 
 ---
 
