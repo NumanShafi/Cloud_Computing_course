@@ -573,6 +573,7 @@ You should see something like:
 ```text
 0.0.0.0:8080->80/tcp
 ```
+<img width="1133" height="354" alt="image" src="https://github.com/user-attachments/assets/6439cb89-ab88-4f1e-92d2-3bf58b3774e7" />
 
 ---
 
